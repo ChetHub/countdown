@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>生日倒计时代码</title>
+  <title>生日倒计时</title>
   <style>
     /* 简单的样式设置，你可以根据喜好调整 */
     body {
@@ -30,7 +30,7 @@
 
   <script>
     // 设置生日的日期，格式为年、月、日，这里示例为2025年5月1日，你需要替换成真实的生日日期
-    const targetDate = new Date(2025, 4, 1);
+    const targetDate = new Date(2025, 3, 6);
 
     function updateCountdown() {
       const now = new Date();
@@ -41,10 +41,10 @@
       const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-      document.querySelector('.countdown').innerHTML = `距离生日还有：${days} 天 ${hours} 小时 ${minutes} 分钟 ${seconds} 秒`;
+      document.querySelector('.countdown').innerHTML = `距离陈涛的生日还有：${days} 天 ${hours} 小时 ${minutes} 分钟 ${seconds} 秒`;
 
       if (diff <= 0) {
-        document.querySelector('.countdown').innerHTML = "生日快乐呀！";
+        document.querySelector('.countdown').innerHTML = "陈涛，祝你生日快乐呀！";
       }
     }
 
