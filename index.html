@@ -20,6 +20,7 @@
     .countdown {
       font-size: 24px;
       color: #007BFF;
+      font-family: 'Microsoft YaHei', 'Courier New', Courier, monospace; /* 优先使用微软雅黑，然后使用等宽字体 */
     }
   </style>
 </head>
@@ -29,9 +30,9 @@
   <div class="countdown"></div>
 
   <script>
-    // 设置生日的日期，格式为年、月、日
-    const birthDate = new Date(1964, 2, 6); // 19964年3月6日，2 代表 3 月
-    const targetDate = new Date(2024, 2, 6); // 2024年3月6日，2 代表 3 月
+    // 设置出生日期和目标日期
+    const birthDate = new Date(1964, 2, 6); // 1964年3月6日，2 代表 3 月
+    const targetDate = new Date(2025, 2, 6); // 2025年3月6日，2 代表 3 月
 
     function updateCountdown() {
       const now = new Date();
@@ -53,8 +54,12 @@
       const birthYear = birthDate.getFullYear();
       const age = currentYear - birthYear;
 
+      // 根据出生日期和当前日期，检查是否已过生日以调整年龄
+      const hasHadBirthdayThisYear = now >= new Date(currentYear, birthDate.getMonth(), birthDate.getDate());
+      const adjustedAge = hasHadBirthdayThisYear ? age : age - 1;
+
       document.querySelector('.countdown').innerHTML = 
-        `距离陈涛的 ${age} 岁生日还有：${formattedDays} 天 ${formattedHours} 小时 ${formattedMinutes} 分钟 ${formattedSeconds} 秒`;
+        `距离陈涛的 ${adjustedAge} 岁生日还有：${formattedDays} 天 ${formattedHours} 小时 ${formattedMinutes} 分钟 ${formattedSeconds} 秒`;
 
       if (diff <= 0) {
         document.querySelector('.countdown').innerHTML = "陈涛，祝你生日快乐呀！";
