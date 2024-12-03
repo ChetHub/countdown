@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>生日倒计时代码</title>
+  <style>
+    /* 简单的样式设置，你可以根据喜好调整 */
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f4f4f4;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+   .countdown {
+      font-size: 24px;
+      color: #007BFF;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>距离生日还有多久呢？</h1>
+  <div class="countdown"></div>
+
+  <script>
+    // 设置生日的日期，格式为年、月、日，这里示例为2025年5月1日，你需要替换成真实的生日日期
+    const targetDate = new Date(2025, 4, 1);
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = targetDate - now;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.querySelector('.countdown').innerHTML = `距离生日还有：${days} 天 ${hours} 小时 ${minutes} 分钟 ${seconds} 秒`;
+
+      if (diff <= 0) {
+        document.querySelector('.countdown').innerHTML = "生日快乐呀！";
+      }
+    }
+
+    // 每隔1000毫秒（即1秒）更新一次倒计时
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+</body>
+
+</html>
