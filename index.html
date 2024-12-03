@@ -17,7 +17,7 @@
       color: #333;
     }
 
-   .countdown {
+    .countdown {
       font-size: 24px;
       color: #007BFF;
     }
@@ -25,12 +25,13 @@
 </head>
 
 <body>
-  <h1>距离生日还有多久呢？</h1>
+  <h1>距离陈涛的生日还有多久呢？</h1>
   <div class="countdown"></div>
 
   <script>
-    // 设置生日的日期，格式为年、月、日，这里示例为2025年5月1日，你需要替换成真实的生日日期
-    const targetDate = new Date(2024, 11, 31);
+    // 设置生日的日期，格式为年、月、日
+    const birthDate = new Date(1964, 2, 6); // 19964年3月6日，2 代表 3 月
+    const targetDate = new Date(2024, 2, 6); // 2024年3月6日，2 代表 3 月
 
     function updateCountdown() {
       const now = new Date();
@@ -41,7 +42,19 @@
       const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-      document.querySelector('.countdown').innerHTML = `距离陈涛的生日还有：${days} 天 ${hours} 小时 ${minutes} 分钟 ${seconds} 秒`;
+      // 使用 padStart 方法将数字格式化为双位数
+      const formattedDays = String(days).padStart(2, '0');
+      const formattedHours = String(hours).padStart(2, '0');
+      const formattedMinutes = String(minutes).padStart(2, '0');
+      const formattedSeconds = String(seconds).padStart(2, '0');
+
+      // 计算年龄
+      const currentYear = now.getFullYear();
+      const birthYear = birthDate.getFullYear();
+      const age = currentYear - birthYear;
+
+      document.querySelector('.countdown').innerHTML = 
+        `距离陈涛的 ${age} 岁生日还有：${formattedDays} 天 ${formattedHours} 小时 ${formattedMinutes} 分钟 ${formattedSeconds} 秒`;
 
       if (diff <= 0) {
         document.querySelector('.countdown').innerHTML = "陈涛，祝你生日快乐呀！";
