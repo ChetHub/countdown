@@ -59,7 +59,7 @@
       const adjustedAge = hasHadBirthdayThisYear ? age : age - 1;
 
       document.querySelector('.countdown').innerHTML = 
-        `距离陈涛的 ${adjustedAge} 岁生日还有：${formattedDays} 天 ${formattedHours} 小时 ${formattedMinutes} 分钟 ${formattedSeconds} 秒`;
+        `离陈涛满 ${adjustedAge} 岁生日还有：${formattedDays} 天 ${formattedHours} 小时 ${formattedMinutes} 分钟 ${formattedSeconds} 秒`;
 
       if (diff <= 0) {
         document.querySelector('.countdown').innerHTML = "陈涛，祝你生日快乐呀！";
